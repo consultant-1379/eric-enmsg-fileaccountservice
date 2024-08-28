@@ -1,0 +1,27 @@
+- name: certreq-secret-1
+  secret:
+    secretName: "{{ .Values.service.name }}-certreq-secret-1"
+- name: certreq-secret-2
+  secret:
+    secretName: "{{ .Values.service.name }}-certreq-secret-2"
+- name: tls-secret-1
+  secret:
+    secretName: "{{ .Values.service.name }}-tls-secret-1"
+- name: tls-secret-2
+  secret:
+    secretName: "{{ .Values.service.name }}-tls-secret-2"
+- name: tls-secret-3
+  secret:
+    secretName: "{{ .Values.service.name }}-tls-secret-3"
+- name: tls-secret-4
+  secret:
+    secretName: "{{ .Values.service.name }}-tls-secret-4"
+- name: httpd-certreq-secret-1
+  secret:
+    secretName: "{{ .Values.service.name }}-httpd-certreq-secret-1"
+- name: httpd-tls-secret-1
+  secret:
+    secretName: "{{ .Values.service.name }}-httpd-tls-secret-1"
+- name: httpd-tls-secret-2
+  secret:
+    secretName: "{{ .Values.service.name }}-httpd-tls-secret-2"

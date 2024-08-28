@@ -1,0 +1,9 @@
+NAME=eric-enmsg-fileaccountservice
+DEP=true
+SVC=fileaccountservice
+REQUESTS=true
+REQUESTS_LIST=4320Mi
+LIMITS=true
+LIMITS_LIST=4620Mi
+WAIT=true
+WAIT_LIST=gossiprouter-cache,gossiprouter-eap7,jms01,postgres,sps

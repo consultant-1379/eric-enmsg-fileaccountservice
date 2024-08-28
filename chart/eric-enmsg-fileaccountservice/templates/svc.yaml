@@ -1,0 +1,18 @@
+{{- template "eric-enm-common-helmchart-library.service" (list . "eric-enmsg.service") -}}
+{{- define "eric-enmsg.service" -}}
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9600"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scrape-role: "endpoints"
+    prometheus.io/scrape-interval: "15s"
+  labels:
+    service: {{ .Values.service.name }}
+{{- end}}
+---
+{{- template "eric-enm-common-helmchart-library.service" (list . "eric-enmsg.service2") -}}
+{{- define "eric-enmsg.service2" -}}
+metadata:
+  name: {{ index .Values.service.additionalServiceNames 0 }}
+{{- end -}}

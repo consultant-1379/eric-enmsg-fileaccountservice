@@ -1,0 +1,14 @@
+- backend:
+    service:
+      name: fileaccountservice
+      port:
+        number: 443
+  path: /oss/fileaccountservice/
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: fileaccountservice
+      port:
+        number: 443
+  path: /enm/instantaneous-licensing/
+  pathType: ImplementationSpecific

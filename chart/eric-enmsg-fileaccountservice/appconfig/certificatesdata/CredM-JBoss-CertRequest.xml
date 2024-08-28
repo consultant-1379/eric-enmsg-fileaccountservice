@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="CertificateRequest.xsd">
+    <application>
+        <certificates>
+            <certificate>
+                <certificatechain>true</certificatechain>
+                <tbscertificate>
+                    <subject>
+                        <entityname>jboss##hostname##</entityname>
+                        <distinguishname>CN=jboss##hostname##</distinguishname>
+                    </subject>
+                    <!--now certificateextension not present: default SubjectAlternativeName (profile) is used -->
+                </tbscertificate>
+                <!-- credMServiceProfile profile must defined/configured on PKI -->
+                <!-- credMServiceProfile is hard coded on CredM Service -->
+                <!-- CLI and JBoss use the same profile -->
+                <endentityprofilename>credMServiceProfile</endentityprofilename>
+                <keypair>
+                    <keypairsize>2048</keypairsize>
+                    <keypairalgorithm>RSA</keypairalgorithm>
+                </keypair>
+                <keystore>
+                    <jkskeystore>
+                        <!--please refer also to jboss standalone.xml -->
+                        <storealias>jboss</storealias>
+                        <storelocation>/ericsson/credm/data/certs/jbossKS.JKS</storelocation>
+                        <storepassword>jbossKS</storepassword>
+                    </jkskeystore>
+                </keystore>
+                <truststore>
+                    <jkstruststore>
+                        <!--please refer also to jboss standalone.xml -->
+                        <storealias>jbossCA</storealias>
+                        <storelocation>/ericsson/credm/data/certs/jbossTS.JKS</storelocation>
+                        <storepassword>jbossTS</storepassword>
+                    </jkstruststore>
+                </truststore>
+                <crlstore>
+                    <base64crlstore>
+                        <storealias>jbossCRL</storealias>
+                        <storefolder>/ericsson/credm/data/certs/jbossCRL</storefolder>
+                        <storepassword></storepassword>
+                    </base64crlstore>
+                </crlstore>
+                <oncheckresult>
+                    <actionlist>
+                        <checkcause>certificateUpdate</checkcause>
+                        <checkcause>trustUpdate</checkcause>
+                        <action>VMRestart</action>
+                    </actionlist>
+                </oncheckresult>
+            </certificate>
+        </certificates>
+        <!--worst case-->
+        <crlupdatemode>CrlRequired</crlupdatemode>
+        <!--keyrequests not present for jboss -->
+    </application>
+    <user>
+        <!-- temporary : user = root -->
+        <!-- keep in the same line to allow grep researches -->
+        <username>root</username>
+        <usergroup>root</usergroup>
+    </user>
+</applications>
